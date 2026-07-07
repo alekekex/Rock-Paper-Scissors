@@ -6,7 +6,7 @@ public class Player {
     public Player(String name, boolean isAI) {
         this.name = name;
         this.isAI = isAI;
-        this.stats = new Stats();
+        this.stats = new Stats();//test
     }
 
     public String getName() {
