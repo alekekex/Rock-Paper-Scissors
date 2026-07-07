@@ -35,7 +35,7 @@ public class Stats {
         this.currStreak++;
 
         if(this.currStreak == 2)
-            this.winStreaks++;
+            this.winStreaks++;//TEST
     }
 
     public void addLosses() {
