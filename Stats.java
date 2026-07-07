@@ -2,12 +2,14 @@ public class Stats {
     private int roundsPlayed;
     private int wins;
     private int losses;
+    private int currStreak;
     private int winStreaks;
 
     public Stats() {
         this.roundsPlayed = 0;
         this.wins = 0;
         this.losses = 0;
+        this.currStreak = 0;
         this.winStreaks = 0;
     }
 
@@ -30,13 +32,15 @@ public class Stats {
     public void addWins() {
         this.wins++;
         this.roundsPlayed++;
+        this.currStreak++;
 
-        if(this.wins > 1 && this.losses == 0)
+        if(this.currStreak == 2)
             this.winStreaks++;
     }
 
     public void addLosses() {
         this.losses++;
         this.roundsPlayed++;
+        this.currStreak = 0;
     }
 }
