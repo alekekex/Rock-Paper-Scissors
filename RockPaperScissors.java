@@ -136,20 +136,16 @@ public class RockPaperScissors {
         boolean hasWon = false;
         int n1 = moves[0];
         int n2 = moves[1];
-        int winnerIdx = -1;
-        int loserIdx = -1;
+        int winnerIdx = 0;
+        int loserIdx = 0;
 
         if(n1 == n2)
             System.out.println("It's a tie! We go again...");
         else {
-            if(n1 > n2 || (n1 == 1 && n2 == 3)) {
-                winnerIdx = 0;
-                loserIdx = 1;
-            }
-            else if(n1 < n2 || (n1 == 3 && n2 == 1)) {
-                winnerIdx = 1;
-                loserIdx = 0;
-            }
+            if((n1 == 2 && n2 == 1) || (n1 == 3 && n2 == 2) || (n1 == 1 && n2 == 3))
+                loserIdx++;
+            else
+                winnerIdx++;
             scores[winnerIdx]++;
             System.out.println(players[winnerIdx].getName() + " has won the round!");
         }
