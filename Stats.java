@@ -1,3 +1,42 @@
 public class Stats {
+    private int roundsPlayed;
+    private int wins;
+    private int losses;
+    private int winStreaks;
 
+    public Stats() {
+        this.roundsPlayed = 0;
+        this.wins = 0;
+        this.losses = 0;
+        this.winStreaks = 0;
+    }
+
+    public int getRoundsPlayed() {
+        return this.roundsPlayed;
+    }
+
+    public int getWins() {
+        return this.wins;
+    }
+
+    public int getLosses() {
+        return this.losses;
+    }
+
+    public int getWinStreaks() {
+        return this.winStreaks;
+    }
+
+    public void addWins() {
+        this.wins++;
+        this.roundsPlayed++;
+
+        if(this.wins > 1 && this.losses == 0)
+            this.winStreaks++;
+    }
+
+    public void addLosses() {
+        this.losses++;
+        this.roundsPlayed++;
+    }
 }
