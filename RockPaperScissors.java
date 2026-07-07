@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class RockPaperScissors {
     private final int MAX_PLAYERS = 2;
-    private final int MIN_CHOICE = 1;
-    private final int MAX_CHOICE = 3;
     private Player[] players;
     private int playerIdx;
     private int[] moves;
@@ -57,55 +55,75 @@ public class RockPaperScissors {
         }
     }
 
-    public int chooseMove(Scanner scanner) {
+    public int makeAIMove() {
         Random random = new Random();
-        String name = players[playerIdx].getName();
+        int move = 0;
+
+        System.out.println(players[playerIdx].getName() + " is thinking...");
+
+        try {
+            Thread.sleep(1500);
+        } catch(InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        move = random.nextInt(3) + 1;
+
+        return move;
+    }
+
+    public int makePlayerMove(Scanner scanner) {
+        Display.displayMoveChoices(players[playerIdx].getName());
+        boolean isValid = false;
+        int move = 0;
+
+        do {
+            try {
+                System.out.print("Enter your choice: ");
+                move = scanner.nextInt();
+                scanner.nextLine();
+
+                if(!(move >= 1 && move <= 3))
+                    System.out.println("Invalid option. Please try again.");
+                else {
+                    isValid = true;
+                    System.out.println();
+                }
+            } catch(InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
+            }
+        } while(!isValid);
+
+
+        return move;
+    }
+
+    public String indexToObject(int n) {
+        String object = "";
+
+        switch(n) {
+            case 1: object = "rock"; break;
+            case 2: object = "paper"; break;
+            case 3: object = "scissors"; break;
+        }
+
+        return object;
+    }
+
+    public int chooseMove(Scanner scanner) {
         boolean isAI = players[playerIdx].isAI();
         int move = 0;
 
         if(isAI) {
-            System.out.println(players[playerIdx].getName() + " is thinking...");
-
-            try {
-                Thread.sleep(1500);
-            } catch(InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-
-            move = random.nextInt(MAX_CHOICE) + 1;
+            move = makeAIMove();
         }
         else {
-            System.out.println(name + ", what do you choose?");
-            System.out.println("[1] Rock");
-            System.out.println("[2] Paper");
-            System.out.println("[3] Scissors");
-            boolean isValid = false;
-
-            do {
-                try {
-                    System.out.print("Enter your choice: ");
-                    move = scanner.nextInt();
-                    scanner.nextLine();
-
-                    if(!(move >= 1 && move <= 3))
-                        System.out.println("Invalid option. Please try again.");
-                    else {
-                        isValid = true;
-                        System.out.println();
-                    }
-                } catch(InputMismatchException e) {
-                    System.out.println("Invalid input. Please enter a number.");
-                    scanner.nextLine();
-                }
-            } while(!isValid);
+            move = makePlayerMove(scanner);
         }
 
-        System.out.print(name + " chooses ");
-        switch(move) {
-            case 1: System.out.println("rock!"); break;
-            case 2: System.out.println("paper!"); break;
-            case 3: System.out.println("scissors!"); break;
-        }
+        String object = indexToObject(move);
+        System.out.println(players[playerIdx].getName() + " chooses " + object + "!");
         Display.displayObject(move);
         return move;
     }

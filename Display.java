@@ -1,31 +1,55 @@
 public class Display {
     public static void displayMenu() {
-        System.out.println("Welcome to Rock Paper Scissors!");
-        System.out.println("[1] Play the game");
-        System.out.println("[2] Show statistics");
-        System.out.println("[3] Exit the program");
+        String divider = "-----------------------------------";
+        System.out.println(divider);
+        System.out.println("        ROCK PAPER SCISSORS        ");
+        System.out.println(divider);
+        System.out.println("1 - Play the game");
+        System.out.println("2 - Show statistics");
+        System.out.println("3 - Exit the program");
+        System.out.println(divider);
     }
 
     public static void displayStats(Player player, Player computer) {
-        System.out.println("Player Statistics:");
-        System.out.println("[1] " + player.getName() + ": Games Played - " +
-                player.getStats().getGamesPlayed() + ", Wins - " +
-                player.getStats().getWins() + ", Losses - " +
-                player.getStats().getLosses() + ", Win Streaks - " +
-                player.getStats().getWinStreaks());
-        System.out.println("[2] " + computer.getName() + ": Games Played - " +
-                computer.getStats().getGamesPlayed() + ", Wins - " +
-                computer.getStats().getWins() + ", Losses - " +
-                computer.getStats().getLosses() + ", Win Streaks - " +
-                computer.getStats().getWinStreaks());
+        String divider = "---------------------------------";
+        System.out.println(divider);
+        System.out.println("        PLAYER STATISTICS        ");
+        System.out.println(divider);
+        System.out.println(player.getName() + ":");
+        System.out.println("Games Played - " + player.getStats().getGamesPlayed());
+        System.out.println("Wins - " + player.getStats().getWins());
+        System.out.println("Losses - " + player.getStats().getLosses());
+        System.out.println("Win Streaks - " + player.getStats().getWinStreaks());
+        System.out.println();
+        System.out.println(computer.getName() + ":");
+        System.out.println("Games Played - " + computer.getStats().getGamesPlayed());
+        System.out.println("Wins - " + computer.getStats().getWins());
+        System.out.println("Losses - " + computer.getStats().getLosses());
+        System.out.println("Win Streaks - " + computer.getStats().getWinStreaks());
+        System.out.println(divider);
         System.out.println();
     }
 
     public static void displayGameModes() {
-        System.out.println("Choose a gamemode");
-        System.out.println("[1] Best of 1 (BO1)");
-        System.out.println("[2] Best of 3 (BO3)");
-        System.out.println("[3] Best of 5 (BO5)");
+        String divider = "----------------------------";
+        System.out.println(divider);
+        System.out.println("          GAMEMODE          ");
+        System.out.println(divider);
+        System.out.println("1 - Best 1 of 1 (BO1)");
+        System.out.println("2 - Best 2 of 3 (BO3)");
+        System.out.println("3 - Best 3 of 5 (BO5)");
+        System.out.println(divider);
+    }
+
+    public static void displayMoveChoices(String name) {
+        String divider = "-------------------------------";
+        System.out.println(divider);
+        System.out.println("        " + name.toUpperCase() + "'S CHOICE ");
+        System.out.println(divider);
+        System.out.println("1 - Rock");
+        System.out.println("2 - Paper");
+        System.out.println("3 - Scissors");
+        System.out.println(divider);
     }
 
     public static void displayObject(int n) {
