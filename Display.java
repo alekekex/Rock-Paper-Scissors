@@ -1,34 +1,36 @@
 public class Display {
-    public static void displayRock() {
-        System.out.println("""
-            _______
-        ---'   ____)
-              (_____)
-              (_____)
-              (____)
-        ---.__(___)
-        """);
-    }
-
-    public static void displayPaper() {
-        System.out.println("""
-             _______
-        ---'    ____)____
-                   ______)
-                  _______)
-                 _______)
-        ---.__________)
-        """);
-    }
-
-    public static void displayScissors() {
-        System.out.println("""
-            _______
-        ---'   ____)____
-                  ______)
-               __________)
-              (____)
-        ---.__(___)
-        """);
+    public static void displayObject(int n) {
+        switch(n) {
+            case 1:
+                System.out.println("""
+                    _______
+                ---'   ____)
+                      (_____)
+                      (_____)
+                      (____)
+                ---.__(___)
+                """);
+                break;
+            case 2:
+                System.out.println("""
+                     _______
+                ---'    ____)____
+                           ______)
+                          _______)
+                         _______)
+                ---.__________)
+                """);
+                break;
+            case 3:
+                System.out.println("""
+                    _______
+                ---'   ____)____
+                          ______)
+                       __________)
+                      (____)
+                ---.__(___)
+                """);
+                break;
+        }
     }
 }
