@@ -13,10 +13,10 @@ public class RockPaperScissors {
     private int maxScore;
     private boolean isWinner;
 
-    public RockPaperScissors(Player player1, Player player2) {
+    public RockPaperScissors(Player player, Player computer) {
         this.players = new Player[MAX_PLAYERS];
-        this.players[0] = player1;
-        this.players[1] = player2;
+        this.players[0] = player;
+        this.players[1] = computer;
         this.playerIdx = 0;
         this.moves = new int[MAX_PLAYERS];
         this.scores = new int[MAX_PLAYERS];
@@ -25,10 +25,7 @@ public class RockPaperScissors {
     }
 
     public void playGame(Scanner scanner) {
-        System.out.println("Choose a gamemode");
-        System.out.println("[1] Best of 1 (BO1)");
-        System.out.println("[2] Best of 3 (BO3)");
-        System.out.println("[3] Best of 5 (BO5)");
+        Display.displayGameModes();
         maxScore = getInput(scanner, MIN_CHOICE, MAX_CHOICE);
 
         while(!isWinner) {
