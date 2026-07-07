@@ -1,20 +1,20 @@
 public class Stats {
-    private int roundsPlayed;
+    private int gamesPlayed;
     private int wins;
     private int losses;
     private int currStreak;
     private int winStreaks;
 
     public Stats() {
-        this.roundsPlayed = 0;
+        this.gamesPlayed = 0;
         this.wins = 0;
         this.losses = 0;
         this.currStreak = 0;
         this.winStreaks = 0;
     }
 
-    public int getRoundsPlayed() {
-        return this.roundsPlayed;
+    public int getGamesPlayed() {
+        return this.gamesPlayed;
     }
 
     public int getWins() {
@@ -31,7 +31,7 @@ public class Stats {
 
     public void addWins() {
         this.wins++;
-        this.roundsPlayed++;
+        this.gamesPlayed++;
         this.currStreak++;
 
         if(this.currStreak == 2)
@@ -40,7 +40,7 @@ public class Stats {
 
     public void addLosses() {
         this.losses++;
-        this.roundsPlayed++;
+        this.gamesPlayed++;
         this.currStreak = 0;
     }
 }

@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +10,26 @@ public class Main {
 
         while(isRunning) {
             Display.displayMenu();
-            int choice = RockPaperScissors.getInput(scanner, 1, 3);
+            int choice = 0;
+            boolean isValid = false;
+
+            do {
+                try {
+                    System.out.print("Enter your choice: ");
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if(!(choice >= 1 && choice <= 3))
+                        System.out.println("Invalid option. Please try again.");
+                    else {
+                        isValid = true;
+                        System.out.println();
+                    }
+                } catch(InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a number.");
+                    scanner.nextLine();
+                }
+            } while(!isValid);
 
             switch(choice) {
                 case 1:

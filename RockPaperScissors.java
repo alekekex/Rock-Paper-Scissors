@@ -26,7 +26,25 @@ public class RockPaperScissors {
 
     public void playGame(Scanner scanner) {
         Display.displayGameModes();
-        maxScore = getInput(scanner, MIN_CHOICE, MAX_CHOICE);
+        boolean isValid = false;
+
+        do {
+            try {
+                System.out.print("Enter your choice: ");
+                maxScore = scanner.nextInt();
+                scanner.nextLine();
+
+                if(!(maxScore >= 1 && maxScore <= 3))
+                    System.out.println("Invalid option. Please try again.");
+                else {
+                    isValid = true;
+                    System.out.println();
+                }
+            } catch(InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
+            }
+        } while(!isValid);
 
         while(!isWinner) {
             moves[0] = chooseMove(scanner);
@@ -34,32 +52,9 @@ public class RockPaperScissors {
             moves[1] = chooseMove(scanner);
             switchTurn();
 
-            if(checkIfWon())
+            if(checkWinner())
                 isWinner = true;
         }
-    }
-
-    public static int getInput(Scanner scanner, int min, int max) {
-        int choice = -1;
-        boolean isValid = false;
-
-        do {
-            try {
-                System.out.print("Enter your choice: ");
-                choice = scanner.nextInt();
-                scanner.nextLine();
-
-                if(!(choice >= min && choice <= max))
-                    System.out.println("Invalid option. Please try again.");
-                else isValid = true;
-            } catch(InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number.");
-                scanner.nextLine();
-            }
-        } while(!isValid);
-
-        System.out.println();
-        return choice;
     }
 
     public int chooseMove(Scanner scanner) {
@@ -84,7 +79,25 @@ public class RockPaperScissors {
             System.out.println("[1] Rock");
             System.out.println("[2] Paper");
             System.out.println("[3] Scissors");
-            move = getInput(scanner, MIN_CHOICE, MAX_CHOICE);
+            boolean isValid = false;
+
+            do {
+                try {
+                    System.out.print("Enter your choice: ");
+                    move = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if(!(move >= 1 && move <= 3))
+                        System.out.println("Invalid option. Please try again.");
+                    else {
+                        isValid = true;
+                        System.out.println();
+                    }
+                } catch(InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a number.");
+                    scanner.nextLine();
+                }
+            } while(!isValid);
         }
 
         System.out.print(name + " chooses ");
@@ -101,7 +114,7 @@ public class RockPaperScissors {
         playerIdx = 1 - playerIdx;
     }
 
-    public boolean checkIfWon() {
+    public boolean checkWinner() {
         boolean hasWon = false;
         int n1 = moves[0];
         int n2 = moves[1];
@@ -111,11 +124,11 @@ public class RockPaperScissors {
         if(n1 == n2)
             System.out.println("It's a tie! We go again...");
         else {
-            if(n1 > n2 || (n1 == MIN_CHOICE && n2 == MAX_CHOICE)) {
+            if(n1 > n2 || (n1 == 1 && n2 == 3)) {
                 winnerIdx = 0;
                 loserIdx = 1;
             }
-            else if(n1 < n2 || (n1 == MAX_CHOICE && n2 == MIN_CHOICE)) {
+            else if(n1 < n2 || (n1 == 3 && n2 == 1)) {
                 winnerIdx = 1;
                 loserIdx = 0;
             }
