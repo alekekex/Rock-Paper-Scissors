@@ -74,3 +74,7 @@ The game tracks the following statistics during each session:
 - Losses
 - Rounds Played
 - Win Streaks
+
+## License
+
+This project was created for learning, personal practice, and fun.
